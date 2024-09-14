@@ -41,7 +41,7 @@ ggplot(data = data) +
 ggplot(data = data, aes(x = t_min, y = t_max)) +
   geom_point(alpha = 0.4, aes(color = "tmin_tmax")) +
   geom_smooth(method = lm) +
-  labs(title = "Berlin", x = " ", y = "temperature (degree celcious)") +
+  labs(title = "Berlin", x = "temperature min", y = "temperature max") +
   scale_color_manual(name = "tmin vs. tmax",
                      values = c("tmin_tmax" = "orange")) +
   theme_bw() +
