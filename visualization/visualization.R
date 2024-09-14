@@ -1,6 +1,3 @@
-
-# Links to this R script + data (climate_berlin.txt) are in the video description
-
 # Load ggplot2 library
 library(ggplot2)
 
