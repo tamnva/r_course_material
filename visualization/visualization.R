@@ -14,14 +14,36 @@ data <- read.csv("C:/examples/climate_berlin.txt", header = TRUE, sep = ",")
 data$date <- as.Date(data$date, format("%Y-%m-%d"))
 data$year <- format(data$date, "%Y")
 
-# plot with ggplot -------------------------------------------------------------
-ggplot(data = data) + 
-  geom_line(aes(x = date, y = t_ave, color = t_ave), linewidth = 0.5) +
-  coord_fixed(ratio = 10) +
-  facet_grid(row = vars(year)) +
-  scale_colour_gradientn(name = "temperature", colours = c("blue",  "orange")) +
-  labs(x = " ", y = "temperature") +
-  theme(legend.position = "top")
 
-ggsave(filename = "C:/examples/myplot.pdf", width = 6, height = 4)
+# Plot t average
+ggplot(data = data) +
+  geom_line(aes(x = date, y = t_ave, color = t_ave), linewidth = 0.5) +
+  #coord_fixed(ratio = 20) +
+  facet_grid(rows = vars(year)) +
+  scale_color_gradientn(name = "temperature", colors = c("blue", "orange")) +
+  labs(title = "Berlin", x = " ", y = "temperature (degree celcious)") +
+  theme_bw() +
+  theme(legend.position = "right")
+  
+  
+# Plot t_min and t_max as lines
+ggplot(data = data) +
+  geom_line(aes(x = date, y = t_min, colour = "tmin")) +
+  geom_line(aes(x = date, y = t_max, colour = "tmax")) +
+  scale_color_manual(name = "temperature",
+                     values = c("tmin" = "blue",
+                                "tmax" = "red")) +
+  labs(title = "Berlin", x = " ", y = "temperature (degree celcious)") +
+  theme_bw() +
+  theme(legend.position = "right")
+  
+# Scatter plot t_min with t_max
+ggplot(data = data, aes(x = t_min, y = t_max)) +
+  geom_point(alpha = 0.4, aes(color = "tmin_tmax")) +
+  geom_smooth(method = lm) +
+  labs(title = "Berlin", x = " ", y = "temperature (degree celcious)") +
+  scale_color_manual(name = "tmin vs. tmax",
+                     values = c("tmin_tmax" = "orange")) +
+  theme_bw() +
+  theme(legend.position = "right")
 
