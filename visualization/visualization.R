@@ -47,3 +47,6 @@ ggplot(data = data, aes(x = t_min, y = t_max)) +
   theme_bw() +
   theme(legend.position = "right")
 
+# save as pdf or png
+ggsave("C:/examples/plot.pdf", width = 4, height = 4)
+ggsave("C:/examples/plot.png", width = 4, height = 4, dpi = 600)
