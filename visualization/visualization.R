@@ -41,12 +41,26 @@ ggplot(data = data) +
 ggplot(data = data, aes(x = t_min, y = t_max)) +
   geom_point(alpha = 0.4, aes(color = "tmin_tmax")) +
   geom_smooth(method = lm) +
-  labs(title = "Berlin", x = "temperature min", y = "temperature max") +
   scale_color_manual(name = "tmin vs. tmax",
                      values = c("tmin_tmax" = "orange")) +
+  labs(title = "Berlin", x = "temperature min", y = "temperature max") +
   theme_bw() +
   theme(legend.position = "right")
 
 # save as pdf or png
 ggsave("C:/examples/plot.pdf", width = 4, height = 4)
 ggsave("C:/examples/plot.png", width = 4, height = 4, dpi = 600)
+
+
+# Plot tmin tmax as a area plot and t_ave as line
+ggplot(data = data) +
+  geom_ribbon(aes(x = date, ymin = t_min, ymax = t_max, fill = "min max"), 
+              alpha = 0.5) +
+  geom_line(aes(x = date, y = t_ave, color = "min max")) +
+  scale_fill_manual(name = "temperature",
+                    values = c("min max" = "blue")) +
+  scale_color_manual(name = "temperature",
+                     values = c("min max" = "darkblue")) +
+  labs(title = "Berlin", x = " ", y = "temperature (degree celcious)") +
+  theme_bw() +
+  theme(legend.position = "right")
