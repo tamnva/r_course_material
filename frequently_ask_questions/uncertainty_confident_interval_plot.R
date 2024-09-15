@@ -1,6 +1,6 @@
 
 
-# Link to this R code is in this video description
+# Link to this R code is in this video description 
 # Load required library
 library(ggplot2)
 
@@ -11,8 +11,8 @@ data <- data.frame(time = values,
                    upper = sin(values/10) + 0.5,
                    median = sin(values/10))
 
-
-# Plot the confidence interval/uncertainty band + median line
+# List of hex color code https://www.color-hex.com/
+# Plot the confidence interval/uncertainty band + median line------------------.
 ggplot(data = data) +
   geom_ribbon(aes(x = time, ymin = lower, ymax = upper, fill = "min_max"), 
               alpha = 0.2) +
@@ -25,7 +25,7 @@ ggplot(data = data) +
   theme_bw() + 
   theme(legend.position = "right")
 
-# Merge legend together
+# Merge legend together---------------------------------------------------------
 ggplot(data = data) +
   geom_ribbon(aes(x = time, ymin = lower, ymax = upper, fill = "median_min_max"), 
               alpha = 0.2) +
@@ -38,7 +38,7 @@ ggplot(data = data) +
   theme_bw() +
   theme(legend.position = "right")
 
-# add another line to the plot
+# add another line to the plot--------------------------------------------------
 ggplot(data = data) +
   geom_ribbon(aes(x = time, ymin = lower, ymax = upper, fill = "min_max"),
               alpha = 0.2) +
@@ -55,7 +55,7 @@ ggplot(data = data) +
   theme(legend.position = "right")
 
 
-# add another uncertainty line
+# add another uncertainty line--------------------------------------------------
 ggplot(data = data) +
   #
   geom_ribbon(aes(x = time, ymin = lower, ymax = upper, fill = "min_max"),
@@ -79,5 +79,5 @@ ggplot(data = data) +
   theme_bw() +
   theme(legend.position = "right")
 
-#  
+# Save plot (the last plot shown here will be saved)----------------------------
 ggsave("C:/examples/plot.pdf", width = 4, height = 2)
