@@ -68,11 +68,11 @@ ggplot(data = data) +
   # add another line 
   geom_line(aes(x = time, y = median + 2, color = "new_line")) +
   # change color of the first and second confidence interval
-  scale_fill_manual(name = "name",
+  scale_fill_manual(name = "name 1",
                     values = c("min_max" = "#1E88E5",
                                "new_min_max" = "#d614c0")) +
   # change color of the 3 lines
-  scale_color_manual(name = "name",
+  scale_color_manual(name = "name 2",
                      values = c("median" = "#1E88E5",
                                 "new_median" = "#d614c0",
                                 "new_line" = "#F36013"),
