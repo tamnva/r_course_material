@@ -57,19 +57,21 @@ ggplot(data = data) +
 
 # add another uncertainty line--------------------------------------------------
 ggplot(data = data) +
-  #
+  # first median line and confidence interval
   geom_ribbon(aes(x = time, ymin = lower, ymax = upper, fill = "min_max"),
               alpha = 0.2) +
   geom_line(aes(x = time, y = median, color = "median")) +
-  #
+  # add another median line and confidence interval
   geom_ribbon(aes(x = time, ymin = lower - 3, ymax = upper - 3, fill = "new_min_max"),
               alpha = 0.2) +
   geom_line(aes(x = time, y = median - 3, color = "new_median")) +
-  #
+  # add another line 
   geom_line(aes(x = time, y = median + 2, color = "new_line")) +
+  # change color of the first and second confidence interval
   scale_fill_manual(name = "name",
                     values = c("min_max" = "#1E88E5",
                                "new_min_max" = "#d614c0")) +
+  # change color of the 3 lines
   scale_color_manual(name = "name",
                      values = c("median" = "#1E88E5",
                                 "new_median" = "#d614c0",
