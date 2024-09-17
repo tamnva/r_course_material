@@ -24,7 +24,7 @@ foreach(i = 1:nrow(m), .combine = 'cbind') %dopar% {
 stopCluster(cl)
 
 # -----------------------------------------------------------------------------#
-#  Example 2: which of the following number is prime number using 3 threads    #
+#  Example 2: which of the following number is prime number using 2 threads    #
 # -----------------------------------------------------------------------------#
 
 # Need to check for these numbers if they are prime numbers
