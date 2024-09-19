@@ -10,8 +10,10 @@ View(mtcars)
 # custom function
 sum_square <- function(x) sum(x^2)
 
-# sum by group
-mtcars %>%
+# sum by group (the pipe operator %>% passes result of one expression as 
+# the first argument to the next, creating a fluid chain of functions
+
+mtcars %>% 
   group_by(cyl, vs) %>%
   summarise(sum_disp = sum(disp),
             mean_disp = mean(disp),
