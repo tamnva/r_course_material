@@ -1,5 +1,5 @@
 
-library(wordcloud2)       # create word cloud
+library(wordcloud)       # create word cloud
 library(dplyr)           # data processing
 
 # Read text from a text file
@@ -16,15 +16,14 @@ df <- data.frame(word = words, count = 1)
 
 # want to remove specific words
 remove_words <- c("the", "a", "and", "of", "in", "for",  
-                  "model", "The", "to", "modified")
+                  "The", ",", ".", ")", "(")
 
 # create data frame with words and frequentcy - remove unwanted words
-df_remove <- df %>%
+new_df <- df %>%
   group_by(word) %>%
   summarise(freq = sum(count)) %>%
   filter(!word %in% remove_words)
 
-
-wordcloud2(demoFreq, 
-           color = "skyblue")
+wordcloud(words = new_df$word,
+          freq = new_df$freq)
 
